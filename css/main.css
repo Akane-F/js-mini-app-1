@@ -5,3 +5,21 @@
     text-decoration: none;
     list-style: none;
 }
+
+#contents-wrapper {
+    padding: 5rem 0;
+    width: 90vw;
+    justify-self: center;
+}
+
+@media (min-width: 600px) {
+    #contents-wrapper {
+        width: 70vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    #contents-wrapper {
+        width: 40vw;
+    }
+}
