@@ -16,20 +16,70 @@
   position:absolute;
   bottom:0;
   right:35vw;
+  transition: opacity 0.5s ease;
 }
 #poop img{
   width: 5vw;
   height:auto;
 }
 #food{
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+#food img[id*="1"]{
   position:absolute;
   top:0;
   left:35vw;
-  opacity: 0;
-}
-#food img{
   width: 5vw;
   height:auto;
+  animation: shake 0.4s ease-in-out infinite, sparkle 3s ease-in-out infinite;
+}
+#food img[id*="2"]{
+  position:absolute;
+  top: 15vh;
+  right:35vw;
+  width: 5vw;
+  height:auto;
+  animation: shake 0.4s ease-in-out infinite, sparkle 3s ease-in-out infinite;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+@keyframes sparkle {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.5) drop-shadow(0 0 10px #b7b7b7);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+#moon{
+  position:absolute;
+  top:0;
+  right:35vw;
+  font-size: 6vw;
+  animation: fadeIn 0.5s ease-in-out;
+  opacity: 0;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sleep-animation {
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 /* action */
@@ -48,4 +98,15 @@
 #action button{
   border: none;
   background: none;
+}
+button img {
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+button:hover img {
+  transform: scale(0.95);
+  filter: brightness(1.1);
+}
+button:active img {
+  transform: scale(0.9);
+  filter: brightness(0.9);
 }

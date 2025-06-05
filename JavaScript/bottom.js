@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('#action button').forEach(button => {
     button.addEventListener('click', () => {
-      console.log('clicked!');
       const action = button.dataset.action;
       handleAction(action);
     });
@@ -10,37 +9,56 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleAction(action) {
     switch (action) {
       case 'eat':
-        // // status up
-        // hunger += 1;
-        // updateStatus();
-
         // #food（opacity: 1 -> 0）
         document.querySelector('#food').style.opacity = '1';
         setTimeout(() => {
           document.querySelector('#food').style.opacity = '0';
-        }, 2000);
-
+        }, 3000);
         break;
       case 'sleep':
-        console.log('😴 ねるアクション実行！');
+          document.querySelector('#piyo').src = './assets/suibun.png';
+          document.querySelector('#moon').style.opacity = '1';
+          setTimeout(() => {
+            document.querySelector('#piyo').src = './assets/piyopiyo.gif';
+            document.querySelector('#moon').style.opacity = '0';
+          }, 3000);
         break;
       case 'game':
-        console.log('🎮 あそぶアクション実行！');
+        document.querySelector('#piyo').src = './assets/mizudeppou.png';
+        setTimeout(() => {
+            document.querySelector('#piyo').src = './assets/piyopiyo.gif';
+          }, 3000);
         break;
       case 'medicine':
-        console.log('💊 おくすりアクション実行！');
+        document.querySelector('#piyo').src = './assets/megusuri-shippai.png';
+        setTimeout(() => {
+            document.querySelector('#piyo').src = './assets/piyopiyo.gif';
+          }, 3000);
         break;
       case 'clean':
-        console.log('🧼 そうじアクション実行！');
+        // #clean（opacity: 0 -> 1）
+        document.querySelector('#poop').style.opacity = '0';
+        setTimeout(() => {
+          document.querySelector('#poop').style.opacity = '1';
+        }, 300000)
         break;
       case 'scale':
-        console.log('⚖️ けいりょうアクション実行！');
+        document.querySelector('#piyo').src = './assets/taiju.png';
+        setTimeout(() => {
+            document.querySelector('#piyo').src = './assets/piyopiyo.gif';
+          }, 3000);
         break;
       case 'education':
-        console.log('📚 べんきょうアクション実行！');
+        document.querySelector('#piyo').src = './assets/study-piyoyo.png';
+        setTimeout(() => {
+            document.querySelector('#piyo').src = './assets/piyopiyo.gif';
+          }, 3000);
         break;
       case 'conversation':
-        console.log('💬 おはなしアクション実行！');
+        document.querySelector('#piyo').src = './assets/missetu.png';
+        setTimeout(() => {
+            document.querySelector('#piyo').src = './assets/piyopiyo.gif';
+          }, 3000);
         break;
     }
   }
