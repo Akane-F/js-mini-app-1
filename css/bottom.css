@@ -1,0 +1,51 @@
+/* character */
+#character{
+  width: 100vw;
+  margin: 3rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  position: relative;
+}
+#character img{
+  width: 20vw;
+  height:auto;
+  margin: 3rem auto;
+}
+#poop{
+  position:absolute;
+  bottom:0;
+  right:35vw;
+}
+#poop img{
+  width: 5vw;
+  height:auto;
+}
+#food{
+  position:absolute;
+  top:0;
+  left:35vw;
+  opacity: 0;
+}
+#food img{
+  width: 5vw;
+  height:auto;
+}
+
+/* action */
+#action{
+  width: 100vw;
+  margin: 3rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#action ul{
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+}
+#action button{
+  border: none;
+  background: none;
+}
