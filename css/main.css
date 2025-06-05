@@ -6,8 +6,16 @@
     list-style: none;
 }
 
+main {
+    background: url(../assets/backgound/Background_Blue.png);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
 #contents-wrapper {
-    padding: 5rem 0;
+    padding-top: 3rem;
     width: 90vw;
     justify-self: center;
 }
