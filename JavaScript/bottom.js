@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const foodModal = document.getElementById('foodModal');
-  const closeModal = document.getElementById('closeModal');
+  const closeModal = document.querySelector('.closeModal');
   const foodChoices = document.querySelectorAll('.food-choice');
 
   document.querySelectorAll('#action button').forEach(button => {
