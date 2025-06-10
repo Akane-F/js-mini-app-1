@@ -56,6 +56,10 @@ setInterval(() => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  const foodModal = document.getElementById('foodModal');
+  const closeModal = document.getElementById('closeModal');
+  const foodChoices = document.querySelectorAll('.food-choice');
+
   document.querySelectorAll('#action button').forEach(button => {
     button.addEventListener('click', () => {
       const action = button.dataset.action;
@@ -63,15 +67,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  if (closeModal) {
+    closeModal.addEventListener('click', () =>{
+      foodModal.classList.add('hidden');
+    })
+  }
+
   function handleAction(action) {
     switch (action) {
       case 'eat':
-        // #food（opacity: 1 -> 0） energy:+1
-        document.querySelector('#food').style.opacity = '1';
-        increaseEnergy();
-        setTimeout(() => {
-          document.querySelector('#food').style.opacity = '0';
-        }, 3000);
+        // #foodModal show
+        foodModal.classList.remove('hidden');
+        foodChoices.forEach(choice => {
+          choice.addEventListener('click', () => {
+            const food = choice.dataset.food;
+            console.log(choice.dataset.food);
+            // close Modal
+            foodModal.classList.add('hidden');
+            // show the food
+            foodDisplay.textContent = food;
+            foodDisplay.classList.remove('hidden');
+            foodDisplay.classList.add('show');
+            // energy:+1
+            increaseEnergy();
+            // timeout
+            setTimeout(() => {
+              foodDisplay.classList.remove('show');
+              foodDisplay.classList.add('hidden');
+            }, 3000);
+          })
+        })
         break;
       case 'sleep':
           // energy:+1

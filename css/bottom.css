@@ -8,8 +8,8 @@
   position: relative;
 }
 #character img{
-  width: 20vw;
-  height:auto;
+  width: auto;
+  height: 40vh;
   margin: 3rem auto;
 }
 #poop{
@@ -22,25 +22,22 @@
   width: 5vw;
   height:auto;
 }
-#food{
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-#food img[id*="1"]{
+#foodDisplay{
   position:absolute;
   top:0;
   left:35vw;
   width: 5vw;
+  font-size: 4rem;
   height:auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
   animation: shake 0.4s ease-in-out infinite, sparkle 3s ease-in-out infinite;
 }
-#food img[id*="2"]{
-  position:absolute;
-  top: 15vh;
-  right:35vw;
-  width: 5vw;
-  height:auto;
-  animation: shake 0.4s ease-in-out infinite, sparkle 3s ease-in-out infinite;
+#foodDisplay.show {
+  opacity: 1;
+}
+.hidden {
+  display: none;
 }
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
@@ -78,6 +75,50 @@
 }
 .sleep-animation {
   animation: fadeIn 0.5s ease-in-out;
+}
+.modal{
+  position:fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: bisque;
+  padding: 3rem;
+  border-radius: 40px;
+}
+.modal.hidden {
+  display: none;
+}
+.modal h2{
+  text-align: center;
+}
+.food-options{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.food-choice{
+  padding: 0.3rem;
+  margin: 1rem;
+  font-size: 4rem;
+  border: solid 1px rgb(199, 199, 199);
+  border-radius: 10px;
+  background-color:rgb(251, 244, 244) ;
+}
+.food-choice:hover {
+  transform: scale(0.95);
+  filter: brightness(1.1);
+}
+.food-choice:active {
+  transform: scale(0.9);
+  filter: brightness(0.9);
+}
+.modal-content{
+  position: relative;
+}
+.closeModal{
+  position:absolute;
+  top: -10%;
+  right: 5%;
 }
 
 /* action */
