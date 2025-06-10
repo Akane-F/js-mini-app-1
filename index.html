@@ -54,9 +54,18 @@
           <div id="poop">
             <img src="./assets/poop 1.png" alt="poop">
           </div>
-          <div id="food">
-            <img id="food1" src="./assets/sake-onigiri.png" alt="food1">
-            <img id="food2" src="./assets/pizza.png" alt="food2">
+          <div id="foodDisplay" class="hidden"></div>
+          <div id="foodModal" class="modal hidden">
+            <div class="modal-content">
+              <h2>What should I eat?</h2>
+              <ul class="food-options">
+                <li><button class="food-choice" data-food="🍙">🍙</button></li>
+                <li><button class="food-choice" data-food="🍎">🍎</button></li>
+                <li><button class="food-choice" data-food="🍕">🍕</button></li>
+                <li><button class="food-choice" data-food="🍜">🍜</button></li>
+              </ul>
+              <button class="closeModal">×</button>
+            </div>
           </div>
           <div id="sleep">
             <p id="moon">🌙</p>
