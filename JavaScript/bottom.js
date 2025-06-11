@@ -1,3 +1,10 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const foodModal = document.getElementById('foodModal');
+  const closeModal = document.querySelector('.closeModal');
+  const foodChoices = document.querySelectorAll('.food-choice');
+  const foodDisplay = document.getElementById('foodDisplay');
+  const emptyEnergy = document.getElementById('empty-energy');
+
 // ゲージのステータス管理
 let gauge = {
   energy: 5,
@@ -46,6 +53,17 @@ function updateGauge(id, gauge, increase) {
   } else if (!increase && gauge < gaugeIcons.length ) {
     icon.style.opacity = 0;
   }
+
+  // empty-energy
+  if (id === 'energy') {
+      if (gauge === 0) {
+        emptyEnergy.classList.remove('hidden');
+        emptyEnergy.classList.add('show');
+      } else {
+        emptyEnergy.classList.remove('show');
+        emptyEnergy.classList.add('hidden');
+      }
+    }
 }
 
 // 3分ごとに、energy:-1 happiness:-1
@@ -54,11 +72,42 @@ setInterval(() => {
   decreaseHappiness();
 }, 180000);
 
+  // foodchoice
+  foodChoices.forEach(choice => {
+    choice.addEventListener('click', () => {
+      const food = choice.dataset.food;
+      console.log(choice.dataset.food);
+      // close Modal
+      foodModal.classList.add('hidden');
+      // show the food
+      foodDisplay.textContent = food;
+      foodDisplay.classList.remove('hidden');
+      foodDisplay.classList.add('show');
+      // energy:+1
+      increaseEnergy();
+      // timeout
+      setTimeout(() => {
+        foodDisplay.classList.remove('show');
+        foodDisplay.classList.add('hidden');
+      }, 3000);
+    })
+  })
 
-document.addEventListener('DOMContentLoaded', () => {
-  const foodModal = document.getElementById('foodModal');
-  const closeModal = document.querySelector('.closeModal');
-  const foodChoices = document.querySelectorAll('.food-choice');
+  // close modal
+  if (closeModal) {
+    closeModal.addEventListener('click', () =>{
+      foodModal.classList.add('hidden');
+    })
+  }
+
+  // empty-energy
+  if (gauge.energy == 0) {
+    emptyEnergy.classList.remove('hidden');
+    emptyEnergy.classList.add('show');
+  } else{
+    emptyEnergy.classList.remove('show');
+    emptyEnergy.classList.add('hidden');   
+  }
 
   document.querySelectorAll('#action button').forEach(button => {
     button.addEventListener('click', () => {
@@ -67,36 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  if (closeModal) {
-    closeModal.addEventListener('click', () =>{
-      foodModal.classList.add('hidden');
-    })
-  }
-
   function handleAction(action) {
     switch (action) {
       case 'eat':
         // #foodModal show
         foodModal.classList.remove('hidden');
-        foodChoices.forEach(choice => {
-          choice.addEventListener('click', () => {
-            const food = choice.dataset.food;
-            console.log(choice.dataset.food);
-            // close Modal
-            foodModal.classList.add('hidden');
-            // show the food
-            foodDisplay.textContent = food;
-            foodDisplay.classList.remove('hidden');
-            foodDisplay.classList.add('show');
-            // energy:+1
-            increaseEnergy();
-            // timeout
-            setTimeout(() => {
-              foodDisplay.classList.remove('show');
-              foodDisplay.classList.add('hidden');
-            }, 3000);
-          })
-        })
         break;
       case 'sleep':
           // energy:+1

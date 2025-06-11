@@ -129,6 +129,26 @@
   transform: scale(0.9);
   filter: brightness(0.9);
 }
+#empty-energy{
+  position:absolute;
+  bottom:0;
+  left:35vw;
+  width: 5vw;
+  font-size: 4rem;
+  height:auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: shake 0.4s ease-in-out infinite;
+}
+#empty-energy img{
+  width: 5vw;
+  height:auto;
+}
+#empty-energy.show {
+  display: block;
+  opacity: 1;
+}
+
 
 /* action */
 #action{
