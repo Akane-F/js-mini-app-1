@@ -28,7 +28,7 @@ function decreaseEnergy() {
 function increaseHappiness() {
   if (gauge.happiness < 5) {
     gauge.happiness++;
-    updateGauge('happiness', gauge.happiness, tru);
+    updateGauge('happiness', gauge.happiness, true);
   }
 }
 
